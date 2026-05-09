@@ -113,7 +113,7 @@ jobs:
               'docker stop $CONTAINER_NAME || true',
               'docker rm $CONTAINER_NAME || true',
               'echo ==== Docker PS After Stop/Remove ==== && docker ps -a',
-              'docker run -d --restart unless-stopped --name $CONTAINER_NAME -p 80:80 --log-driver awslogs --log-opt awslogs-region=$AWS_REGION --log-opt awslogs-group=/ec2/$CONTAINER_NAME --log-opt awslogs-stream-prefix=app $IMAGE_URI',
+              'docker run -d --restart unless-stopped --name $CONTAINER_NAME -p 80:80 $IMAGE_URI',
               'echo ==== Docker PS After Run ==== && docker ps -a',
               'echo ==== Docker Logs ==== && docker logs $CONTAINER_NAME || true'
             ]" \
