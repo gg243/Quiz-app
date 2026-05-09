@@ -102,12 +102,6 @@ If you want CloudWatch container logs, you can re-enable the `awslogs` driver on
 - GitHub Actions removes the need for a separate CI server.
 - Nginx serves the built React app efficiently.
 
-## Assumptions
-
-- The app is a static front end and does not need a backend database.
-- One EC2 instance is enough for the task.
-- AWS credentials are available to Terraform and GitHub Actions.
-
 ## Limitations
 
 - No custom domain or HTTPS certificate.
