@@ -118,6 +118,3 @@ jobs:
         run: |
           echo "Deployment triggered on EC2."
 
-
-
-
