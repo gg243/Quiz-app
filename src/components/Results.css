@@ -1,0 +1,162 @@
+.results-container {
+  background: var(--surface);
+  border-radius: 1.5rem;
+  padding: 3rem 2.5rem;
+  box-shadow: 0 20px 60px var(--shadow);
+  text-align: center;
+  animation: slideUp 0.5s ease-out;
+}
+
+.results-icon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  animation: bounceIn 0.6s ease;
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.results-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+.results-description {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+}
+
+.score-circle {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  margin: 0 auto 3rem;
+}
+
+.score-svg {
+  transform: rotate(-90deg);
+}
+
+.score-circle-bg {
+  fill: none;
+  stroke: var(--surface-light);
+  stroke-width: 12;
+}
+
+.score-circle-fill {
+  fill: none;
+  stroke: url(#gradient);
+  stroke-width: 12;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1s ease;
+}
+
+.score-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.score-percentage {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.score-fraction {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.restart-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 0.75rem;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.restart-button:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(99, 102, 241, 0.4);
+}
+
+.restart-button:active {
+  transform: translateY(0);
+}
+
+.restart-button svg {
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.restart-button:hover svg {
+  animation-duration: 0.8s;
+}
+
+@media (max-width: 640px) {
+  .results-container {
+    padding: 2rem 1.5rem;
+    border-radius: 1.25rem;
+  }
+  
+  .results-icon {
+    font-size: 3rem;
+  }
+  
+  .results-title {
+    font-size: 1.5rem;
+  }
+  
+  .results-description {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .score-circle {
+    margin-bottom: 2rem;
+  }
+  
+  .score-percentage {
+    font-size: 2rem;
+  }
+}
