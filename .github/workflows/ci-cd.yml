@@ -117,3 +117,7 @@ jobs:
       - name: Verify deployment
         run: |
           echo "Deployment triggered on EC2."
+
+
+
+
