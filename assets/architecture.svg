@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="680" viewBox="0 0 1200 680">
+  <defs>
+    <style>
+      .bg { fill: #ffffff; }
+      .card { fill: #ffffff; stroke: #e5e7eb; stroke-width: 2; rx: 16; }
+      .title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-weight: 700; fill: #111827; font-size: 22px; }
+      .label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-weight: 600; fill: #111827; font-size: 18px; }
+      .muted { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-weight: 500; fill: #4b5563; font-size: 14px; }
+      .small { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; fill: #374151; font-size: 13px; }
+      .accent { fill: #b91c1c; }
+      .arrow { stroke: #9ca3af; stroke-width: 3; fill: none; marker-end: url(#arrowHead); }
+      .dash { stroke-dasharray: 8 8; }
+    </style>
+    <marker id="arrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9ca3af" />
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1200" height="680"/>
+
+  <!-- Header -->
+  <rect x="0" y="0" width="1200" height="84" fill="#b91c1c"/>
+  <text x="56" y="52" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="800" font-size="28">Quiz App — Architecture</text>
+  <text x="56" y="74" fill="#fee2e2" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="600" font-size="14">React (Vite) → Docker (Nginx) → AWS ECR → EC2 deployment via AWS SSM</text>
+
+  <!-- Boxes -->
+  <!-- Developer -->
+  <rect class="card" x="56" y="132" width="320" height="150"/>
+  <rect x="56" y="132" width="10" height="150" class="accent"/>
+  <text class="label" x="84" y="170">Developer Laptop</text>
+  <text class="muted" x="84" y="196">Local dev &amp; tests</text>
+  <text class="small" x="84" y="224">npm ci</text>
+  <text class="small" x="84" y="246">npm test</text>
+  <text class="small" x="84" y="268">docker build</text>
+
+  <!-- GitHub -->
+  <rect class="card" x="440" y="132" width="320" height="150"/>
+  <rect x="440" y="132" width="10" height="150" class="accent"/>
+  <text class="label" x="468" y="170">GitHub Repository</text>
+  <text class="muted" x="468" y="196">Source control + Actions</text>
+  <text class="small" x="468" y="224">.github/workflows/ci-cd.yml</text>
+
+  <!-- Actions -->
+  <rect class="card" x="824" y="132" width="320" height="150"/>
+  <rect x="824" y="132" width="10" height="150" class="accent"/>
+  <text class="label" x="852" y="170">GitHub Actions</text>
+  <text class="muted" x="852" y="196">CI: test + build</text>
+  <text class="muted" x="852" y="216">CD: push + deploy</text>
+  <text class="small" x="852" y="246">Build image, push to ECR</text>
+  <text class="small" x="852" y="268">Deploy via SSM</text>
+
+  <!-- ECR -->
+  <rect class="card" x="170" y="354" width="380" height="156"/>
+  <rect x="170" y="354" width="10" height="156" class="accent"/>
+  <text class="label" x="200" y="392">Amazon ECR</text>
+  <text class="muted" x="200" y="418">Container registry</text>
+  <text class="small" x="200" y="446">quiz-app:&lt;git-sha&gt;</text>
+  <text class="small" x="200" y="468">quiz-app:latest</text>
+
+  <!-- EC2 -->
+  <rect class="card" x="650" y="354" width="494" height="256"/>
+  <rect x="650" y="354" width="10" height="256" class="accent"/>
+  <text class="label" x="680" y="392">Amazon EC2 (Docker Host)</text>
+  <text class="muted" x="680" y="418">Receives deployments via AWS Systems Manager</text>
+
+  <rect x="680" y="448" width="430" height="140" fill="#fff7ed" stroke="#fed7aa" stroke-width="2" rx="14"/>
+  <text class="label" x="708" y="484">Docker Container: quiz-app</text>
+  <text class="muted" x="708" y="508">Nginx serves built React assets</text>
+  <text class="small" x="708" y="536">Port mapping: 80:80</text>
+  <text class="small" x="708" y="558">Health: /health</text>
+
+  <rect x="680" y="602" width="430" height="48" fill="#f9fafb" stroke="#e5e7eb" stroke-width="2" rx="12"/>
+  <text class="muted" x="708" y="632">Inbound: TCP/80 from the internet (SG)</text>
+
+  <!-- Arrows -->
+  <path class="arrow" d="M 376 207 C 400 207, 412 207, 440 207" />
+  <path class="arrow" d="M 760 207 C 784 207, 800 207, 824 207" />
+
+  <path class="arrow" d="M 984 282 C 984 320, 620 330, 540 354" />
+  <path class="arrow" d="M 550 432 C 600 432, 620 432, 650 432" />
+
+  <!-- SSM label -->
+  <text class="muted" x="600" y="330">SSM Run Command</text>
+
+  <!-- Footer notes -->
+  <text class="muted" x="56" y="650">Note: AWS credentials are stored as GitHub Actions secrets (never committed to the repo).</text>
+</svg>

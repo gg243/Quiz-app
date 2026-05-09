@@ -1,6 +1,8 @@
-# Quiz App Deployment Guide
+# Quiz App Deployment & Operations Guide
 
 This project is a React quiz application with a simple, automated AWS deployment.
+
+Live site: http://35.74.76.225
 
 ## Architecture Overview
 
@@ -29,7 +31,9 @@ This project is a React quiz application with a simple, automated AWS deployment
 - nginx.conf — static file server config
 - .github/workflows/ci-cd.yml — CI/CD pipeline
 - terraform/ — AWS infrastructure files
-- scripts/generate-guide.js — PDF guide generator
+- assets/architecture.svg — architecture diagram source
+- assets/architecture.png — generated architecture diagram image
+  
 
 ## Local Development
 
@@ -87,7 +91,9 @@ The GitHub Actions workflow performs:
 
 ## Monitoring and Logging
 
-Container logs are sent to CloudWatch using the awslogs driver. A CloudWatch alarm monitors EC2 CPU usage.
+This setup provisions a CloudWatch log group and a CloudWatch CPU alarm for the EC2 host. The container itself is run with the default Docker logging (viewable via `docker logs quiz-app`).
+
+If you want CloudWatch container logs, you can re-enable the `awslogs` driver once the EC2 host Docker version supports the required options.
 
 ## Design Decisions
 
@@ -116,24 +122,8 @@ Container logs are sent to CloudWatch using the awslogs driver. A CloudWatch ala
 - add richer CloudWatch dashboards and alarms
 - add end-to-end tests
 
-## Delivery Guide
 
-See [Quiz-App-Step-by-Step-Guide.pdf](Quiz-App-Step-by-Step-Guide.pdf) for the step-by-step guide.
 
-### AWS Deployment
-- AWS Account with appropriate permissions
-- AWS CLI configured
-- Terraform >= 1.0
-- GitHub repository
-
-### Required AWS Permissions
-- ECS (Full access)
-- ECR (Full access)
-- VPC (Create/Manage)
-- IAM (Create roles)
-- CloudWatch (Full access)
-- Application Load Balancer
-- Auto Scaling
 
 ## 🚀 Quick Start
 
@@ -180,6 +170,7 @@ See [Quiz-App-Step-by-Step-Guide.pdf](Quiz-App-Step-by-Step-Guide.pdf) for the s
    ```
 
 ## 🚢 Deployment Guide
+*All documentation is now maintained in this README. No external PDF guides or screenshots are required or generated.*
 
 ### Step 1: Prepare AWS Account
 
